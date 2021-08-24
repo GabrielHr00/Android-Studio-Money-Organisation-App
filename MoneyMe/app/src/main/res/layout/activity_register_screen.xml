@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BF9E86"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+  <LinearLayout
+      android:layout_width="300dp"
+      android:layout_height="150dp"
+      android:background="@drawable/rounded_corners"
+      android:layout_marginTop="30dp">
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:gravity="center"
+      android:text="Make an account"
+      android:textAllCaps="true"
+      android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+      android:textColor="@color/black"
+      android:visibility="visible"
+      tools:textStyle="bold" />
+  </LinearLayout>
+
+
+  <EditText
+      android:id="@+id/username"
+      android:layout_width="250dp"
+      android:layout_height="30dp"
+      android:layout_marginTop="60dp"
+      android:background="@color/cardview_dark_background"
+      android:drawableStart="@android:drawable/sym_action_email"
+      android:hint=" Username"
+      android:textColor="@color/white"
+      android:inputType="text"
+      android:textColorHint="#BF9E86"
+      android:textCursorDrawable="@color/white"/>
+
+
+  <EditText
+      android:id="@+id/password"
+      android:layout_width="250dp"
+      android:layout_height="30dp"
+      android:layout_marginTop="10dp"
+      android:background="@color/cardview_dark_background"
+      android:drawableStart="@android:drawable/ic_lock_idle_lock"
+      android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+      android:hint=" Password"
+      android:textColor="@color/white"
+      android:inputType="textPassword"
+      android:textColorHint="#BF9E86"
+      android:textCursorDrawable="@color/white"/>
+
+  <EditText
+      android:id="@+id/repassword"
+      android:layout_width="250dp"
+      android:layout_height="30dp"
+      android:layout_marginTop="10dp"
+      android:background="@color/cardview_dark_background"
+      android:drawableStart="@android:drawable/ic_lock_idle_lock"
+      android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+      android:hint=" Retype password"
+      android:textColor="@color/white"
+      android:inputType="textPassword"
+      android:textColorHint="#BF9E86"
+      android:textCursorDrawable="@color/white"/>
+
+  <Button
+      android:id="@+id/button"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:layout_marginTop="45dp"
+      android:background="@drawable/rounded_corners"
+      android:text="@string/register"
+      android:textColor="@color/black"
+      android:textStyle="bold"
+      app:backgroundTint="#C8D293"
+      tools:text="Register"
+      android:textAllCaps="false"
+      tools:textAllCaps="false" />
+
+
+</LinearLayout>

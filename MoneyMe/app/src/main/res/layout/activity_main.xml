@@ -27,7 +27,9 @@
         android:drawableStart="@android:drawable/sym_action_email"
         android:hint=" Username"
         android:inputType="text"
-        android:textColorHint="#BF9E86" />
+        android:textColor="@color/white"
+        android:textColorHint="#BF9E86"
+        android:textCursorDrawable="@color/white"/>
 
     <EditText
         android:id="@+id/password"
@@ -39,7 +41,9 @@
         android:drawableLeft="@android:drawable/ic_lock_idle_lock"
         android:hint=" Password"
         android:inputType="textPassword"
-        android:textColorHint="#BF9E86" />
+        android:textColor="@color/white"
+        android:textColorHint="#BF9E86"
+        android:textCursorDrawable="@color/white"/>
 
     <Button
         android:id="@+id/button"
@@ -57,7 +61,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="140dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -70,6 +74,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/register_button"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
