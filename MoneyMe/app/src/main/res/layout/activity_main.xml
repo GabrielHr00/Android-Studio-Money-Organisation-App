@@ -46,7 +46,7 @@
         android:textCursorDrawable="@color/white"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/login"
         android:layout_width="90dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
