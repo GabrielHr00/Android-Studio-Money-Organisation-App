@@ -1,1 +1,2 @@
 # Android-Studio-Money-Organisation-App
+The project is an idea of me, so how we can organise our money. It means the following, every user has an account and can log in or make himself a new account, so there should be a navigation bar, where you can choose between many options. But the main purpose of the app should be to calculate how much money of your income is to be saved, how much to spend and how much is for outcome. So it also calculates a diagramm or just a graphic how good are you going with the spending, and how good do you organise your money.
