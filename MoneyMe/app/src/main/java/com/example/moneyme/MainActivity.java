@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         db = new DBHelper(this);
 
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,9 +42,11 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please make sure, that the both fields are filled", Toast.LENGTH_SHORT).show();
                 }else{
                     boolean checkPass = db.checkPassword(user, pass);
-                    if(checkPass){
+                    if(checkPass == true){
                         Toast.makeText(MainActivity.this, "Successfully logged in!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        intent.putExtra("user", user);
+                        intent.putExtra("pass", pass);
                         startActivity(intent);
                     }else{
                         Toast.makeText(MainActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
