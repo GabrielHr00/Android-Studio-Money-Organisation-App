@@ -15,40 +15,50 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
-    BottomNavigationView navigationView;
+    Button registerButton, logIn;
+    EditText username, password;
+    DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Navigation Bar
-        navigationView = findViewById(R.id.navigation);
-        navigationView.setSelectedItemId(R.id.home);
-        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        registerButton = findViewById(R.id.register_button);
+        logIn = findViewById(R.id.login);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        db = new DBHelper(this);
+
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.person:
-                        startActivity(new Intent(getApplicationContext(), LogIn.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.money:
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.progress:
-                        startActivity(new Intent(getApplicationContext(), Progress.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.info:
-                        startActivity(new Intent(getApplicationContext(), About.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.home:
-                        return true;
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RegisterScreen.class));
+            }
+        });
+
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
+
+                if(user.equals("") || pass.equals("")){
+                    Toast.makeText(MainActivity.this, "Please make sure, that the both fields are filled", Toast.LENGTH_SHORT).show();
+                }else{
+                    boolean checkPass = db.checkPassword(user, pass);
+                    if(checkPass == true){
+                        Toast.makeText(MainActivity.this, "Successfully logged in!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        intent.putExtra("user", user);
+                        intent.putExtra("pass", pass);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(MainActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                return false;
+
             }
         });
     }
