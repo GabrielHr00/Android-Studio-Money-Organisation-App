@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class Overview extends AppCompatActivity {
-    TextView displayIncome;
+    TextView displaySavings, displayOutcome, displayFree;
     BottomNavigationView navigationView;
 
     @Override
@@ -20,11 +20,20 @@ public class Overview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
-        displayIncome = findViewById(R.id.income);
+        displaySavings = findViewById(R.id.savings);
+        displayOutcome = findViewById(R.id.outcome);
+        displayFree = findViewById(R.id.free);
+
         Intent intent = getIntent();
-        double income = Double.parseDouble(intent.getStringExtra("income"));
-        income = 0.4 * income;
-        displayIncome.setText("" + income);
+        double savings = Double.parseDouble(intent.getStringExtra("income"));
+        double free = savings;
+        free = 0.2 * free;
+        savings = 0.4 * savings;
+        displaySavings.setText(String.format("   %.2f   ", savings));
+        displayOutcome.setText(String.format("   %.2f   ", savings));
+        displayFree.setText(String.format("   %.2f   ", free));
+
+
 
         // Navigation Bar
         navigationView = findViewById(R.id.navigation);
@@ -33,8 +42,8 @@ public class Overview extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.person:
-                        startActivity(new Intent(getApplicationContext(), LogIn.class));
+                    case R.id.vote:
+                        startActivity(new Intent(getApplicationContext(), Vote.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.money:
