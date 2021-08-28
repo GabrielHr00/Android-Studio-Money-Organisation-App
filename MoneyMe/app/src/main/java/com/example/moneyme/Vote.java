@@ -6,49 +6,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class Overview extends AppCompatActivity {
-    TextView displaySavings, displayOutcome, displayFree;
+public class Vote extends AppCompatActivity {
     BottomNavigationView navigationView;
-    public static double SAVINGS_EXPENSES_VALUE = 0.40;
-    public static double FREE_MONEY_VALUE = 0.20;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_overview);
-
-        displaySavings = findViewById(R.id.savings);
-        displayOutcome = findViewById(R.id.outcome);
-        displayFree = findViewById(R.id.free);
-
-        Intent intent = getIntent();
-        double savings = Double.parseDouble(intent.getStringExtra("income"));
-        double free = savings;
-        free = FREE_MONEY_VALUE * free;
-        savings = SAVINGS_EXPENSES_VALUE * savings;
-        displaySavings.setText(String.format("   %.2f   ", savings));
-        displayOutcome.setText(String.format("   %.2f   ", savings));
-        displayFree.setText(String.format("   %.2f   ", free));
-
+        setContentView(R.layout.activity_log_in);
 
         // Navigation Bar
         navigationView = findViewById(R.id.navigation);
-        navigationView.setSelectedItemId(R.id.money);
+        navigationView.setSelectedItemId(R.id.vote);
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.vote:
-                        startActivity(new Intent(getApplicationContext(), Vote.class));
-                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.money:
+                        startActivity(new Intent(getApplicationContext(), Overview.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.progress:
                         startActivity(new Intent(getApplicationContext(), Progress.class));
@@ -66,5 +51,7 @@ public class Overview extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 }

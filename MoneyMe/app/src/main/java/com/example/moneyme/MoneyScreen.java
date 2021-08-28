@@ -6,35 +6,49 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class Overview extends AppCompatActivity {
-    TextView displaySavings, displayOutcome, displayFree;
+public class MoneyScreen extends AppCompatActivity {
+    Button calculate;
+    EditText income;
+    DBHelper db;
     BottomNavigationView navigationView;
-    public static double SAVINGS_EXPENSES_VALUE = 0.40;
-    public static double FREE_MONEY_VALUE = 0.20;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_overview);
+        setContentView(R.layout.activity_money_screen);
+        calculate = findViewById(R.id.calculate);
+        income = findViewById(R.id.moneyMeTitle);
 
-        displaySavings = findViewById(R.id.savings);
-        displayOutcome = findViewById(R.id.outcome);
-        displayFree = findViewById(R.id.free);
+        db = new DBHelper(this);
 
-        Intent intent = getIntent();
-        double savings = Double.parseDouble(intent.getStringExtra("income"));
-        double free = savings;
-        free = FREE_MONEY_VALUE * free;
-        savings = SAVINGS_EXPENSES_VALUE * savings;
-        displaySavings.setText(String.format("   %.2f   ", savings));
-        displayOutcome.setText(String.format("   %.2f   ", savings));
-        displayFree.setText(String.format("   %.2f   ", free));
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String inco = income.getText().toString();
+                if (inco.equals("")) {
+                    Toast.makeText(MoneyScreen.this, "Please enter a valid income!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Get User credentials
+                    Intent intent = getIntent();
+                    String username = intent.getStringExtra("user");
+                    String password = intent.getStringExtra("pass");
+
+                    // insert an income value and send it to Overview
+                    Intent intent2 = new Intent(getApplicationContext(), Overview.class);
+                    intent2.putExtra("income", inco);
+                    db.insertIncome(username, password, inco);
+                    startActivity(intent2);
+                }
+            }
+        });
 
 
         // Navigation Bar
