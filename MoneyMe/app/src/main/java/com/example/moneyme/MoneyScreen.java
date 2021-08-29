@@ -19,33 +19,36 @@ public class MoneyScreen extends AppCompatActivity {
     EditText income;
     DBHelper db;
     BottomNavigationView navigationView;
+    static boolean isAlreadyRun = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_screen);
+
         calculate = findViewById(R.id.calculate);
         income = findViewById(R.id.moneyMeTitle);
-
         db = new DBHelper(this);
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String inco = income.getText().toString();
-                if (inco.equals("")) {
+                String income1 = income.getText().toString();
+
+                if (income1.equals("")) {
                     Toast.makeText(MoneyScreen.this, "Please enter a valid income!", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Get User credentials
-                    Intent intent = getIntent();
-                    String username = intent.getStringExtra("user");
-                    String password = intent.getStringExtra("pass");
+                }
+                else {
+//                    Intent intent2 = getIntent();
+//                    String username = intent2.getStringExtra("user");
+//                    String password = intent2.getStringExtra("pass");
 
                     // insert an income value and send it to Overview
-                    Intent intent2 = new Intent(getApplicationContext(), Overview.class);
-                    intent2.putExtra("income", inco);
-                    db.insertIncome(username, password, inco);
-                    startActivity(intent2);
+                    Intent intent = new Intent(getApplicationContext(), Overview.class);
+//                    isAlreadyRun = true;
+//                    db.insertIncome(username, password, income1);
+                    intent.putExtra("income", income1);
+                    startActivity(intent);
                 }
             }
         });
@@ -80,5 +83,9 @@ public class MoneyScreen extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public static boolean isAlreadyRun(){
+        return isAlreadyRun;
     }
 }

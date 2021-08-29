@@ -38,19 +38,23 @@ public class HomeActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.vote:
                         startActivity(new Intent(getApplicationContext(), Vote.class));
-                        overridePendingTransition(0, 0);
+                        //overridePendingTransition(0, 0);
                         return true;
                     case R.id.money:
+//                        if(MoneyScreen.isAlreadyRun() == true){
+//                            startActivity(new Intent(getApplicationContext(), Overview.class));
+//                            return true;
+//                        }
                         startActivity(new Intent(getApplicationContext(), MoneyScreen.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.progress:
                         startActivity(new Intent(getApplicationContext(), Progress.class));
-                        overridePendingTransition(0, 0);
+                        //overridePendingTransition(0, 0);
                         return true;
                     case R.id.info:
                         startActivity(new Intent(getApplicationContext(), About.class));
-                        overridePendingTransition(0, 0);
+                        //overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
                         return true;

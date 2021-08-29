@@ -33,6 +33,7 @@
             android:background="@color/cardview_dark_background"
             android:hint=" Type your income: "
             android:inputType="text"
+            android:padding="5dp"
             android:textColor="@color/white"
             android:textColorHint="#BF9E86"
             android:textCursorDrawable="@color/white"
