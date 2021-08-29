@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BF9E86"
+    android:padding="10dp"
+    tools:context=".Vote">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="30dp"
+            android:background="@drawable/gf"
+            android:elevation="2dp"
+            app:itemIconSize="30dp"
+            app:itemIconTint="@drawable/item_selector"
+            app:itemRippleColor="@android:color/transparent"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/menu_items" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="314dp"
+        android:layout_height="78dp"
+        android:gravity="center"
+        android:text="How well did you organised your money this month?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.359" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="117dp"
+        android:layout_height="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageButton
+        android:id="@+id/_100"
+        android:layout_width="76dp"
+        android:layout_height="71dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.545"
+        app:srcCompat="@drawable/ic_baseline_sentiment_very_satisfied_24"
+        android:background="@drawable/circle_shape" />
+
+    <ImageButton
+        android:id="@+id/_65"
+        android:layout_width="76dp"
+        android:layout_height="71dp"
+        android:background="@drawable/circle_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.373"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.546"
+        app:srcCompat="@drawable/ic_baseline_sentiment_satisfied_alt_24" />
+
+    <ImageButton
+        android:id="@+id/_30"
+        android:layout_width="76dp"
+        android:layout_height="71dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.546"
+        app:srcCompat="@drawable/ic_baseline_sentiment_dissatisfied_24"
+        android:background="@drawable/circle_shape" />
+
+    <ImageButton
+        android:id="@+id/_0"
+        android:layout_width="76dp"
+        android:layout_height="71dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.546"
+        app:srcCompat="@drawable/ic_baseline_sentiment_very_dissatisfied_24"
+        android:background="@drawable/circle_shape" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

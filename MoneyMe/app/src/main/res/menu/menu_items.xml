@@ -18,6 +18,6 @@
         android:title="money"></item>
 
     <item android:id="@+id/progress"
-        android:icon="@drawable/ic_baseline_auto_graph_24"
+        android:icon="@drawable/ic_baseline_show_chart_24"
         android:title="pregress"></item>
 </menu>
