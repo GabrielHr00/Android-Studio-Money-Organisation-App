@@ -48,6 +48,8 @@ public class RegisterScreen extends AppCompatActivity {
                             if(insert == true){
                                 Toast.makeText(RegisterScreen.this, "Successfully registered", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                intent.putExtra("user", user);
+                                intent.putExtra("pass", pass);
                                 startActivity(intent);
                             }else{
                                 Toast.makeText(RegisterScreen.this, "Registration failed", Toast.LENGTH_SHORT).show();

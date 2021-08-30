@@ -64,14 +64,14 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-//    public void insertIncome(String username, String password, String income){
-//        SQLiteDatabase MyDB = this.getWritableDatabase();
-//        Cursor cursor = MyDB.rawQuery("SELECT * FROM Users WHERE username = ? AND password = ?", new String[] {username, password});
-//
-//        if(cursor.getCount() > 0){
-//            MyDB.execSQL("REPLACE INTO Users(username, password, income) VALUES( ?, ?, ?);", new String[] {username, password, income});
-//        }
-//    }
+    public void insertIncome(String username, String password, String income){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("SELECT * FROM Users WHERE username = ? AND password = ?", new String[] {username, password});
+
+        if(cursor.getCount() > 0){
+            MyDB.execSQL("REPLACE INTO Users(username, password, income) VALUES(?,?,?);", new String[] {username, password, income});
+        }
+    }
 }
 
 
