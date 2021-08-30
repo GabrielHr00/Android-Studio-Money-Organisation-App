@@ -39,20 +39,19 @@ public class MoneyScreen extends AppCompatActivity {
                     Toast.makeText(MoneyScreen.this, "Please enter a valid income!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-//                    Intent intent2 = getIntent();
-//                    String username = intent2.getStringExtra("user");
-//                    String password = intent2.getStringExtra("pass");
+                    Intent intent = getIntent();
+                    String username = intent.getStringExtra("user");
+                    String password = intent.getStringExtra("pass");
 
                     // insert an income value and send it to Overview
-                    Intent intent = new Intent(getApplicationContext(), Overview.class);
-//                    isAlreadyRun = true;
-//                    db.insertIncome(username, password, income1);
-                    intent.putExtra("income", income1);
-                    startActivity(intent);
+                    Intent intent1 = new Intent(getApplicationContext(), Overview.class);
+                    isAlreadyRun = true;
+                    db.insertIncome(username, password, income1);
+                    intent1.putExtra("income", income1);
+                    startActivity(intent1);
                 }
             }
         });
-
 
         // Navigation Bar
         navigationView = findViewById(R.id.navigation);

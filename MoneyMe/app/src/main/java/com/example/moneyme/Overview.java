@@ -18,7 +18,6 @@ public class Overview extends AppCompatActivity {
     public static double FREE_MONEY_VALUE = 0.20;
     public static double savings = 0.0;
     public static double free = 0.0;
-    private int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +28,9 @@ public class Overview extends AppCompatActivity {
         displayOutcome = findViewById(R.id.outcome);
         displayFree = findViewById(R.id.free);
 
-        // Get and calculate the values
-        if(this.counter == 0){
-            Intent intent = getIntent();
-            savings = Double.parseDouble(intent.getStringExtra("income"));
-            this.counter += 1;
-        }
+
+        Intent intent = getIntent();
+        savings = Double.parseDouble(intent.getStringExtra("income"));
         free = savings;
         free = FREE_MONEY_VALUE * free;
         savings = SAVINGS_EXPENSES_VALUE * savings;
