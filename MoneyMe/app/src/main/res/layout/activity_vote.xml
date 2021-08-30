@@ -28,7 +28,7 @@
             android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:layout_margin="30dp"
-            android:background="@drawable/gf"
+            android:background="@drawable/border_registerscreen"
             android:elevation="2dp"
             app:itemIconSize="30dp"
             app:itemIconTint="@drawable/item_selector"
@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.545"
-        app:srcCompat="@drawable/ic_baseline_sentiment_very_satisfied_24"
+        app:srcCompat="@drawable/verysatisfied_vote_icon"
         android:background="@drawable/circle_shape" />
 
     <ImageButton
@@ -89,7 +89,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.546"
-        app:srcCompat="@drawable/ic_baseline_sentiment_satisfied_alt_24" />
+        app:srcCompat="@drawable/satisfied_vote_icon" />
 
     <ImageButton
         android:id="@+id/_30"
@@ -101,7 +101,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.546"
-        app:srcCompat="@drawable/ic_baseline_sentiment_dissatisfied_24"
+        app:srcCompat="@drawable/disatisfied_vote_icon"
         android:background="@drawable/circle_shape" />
 
     <ImageButton
@@ -114,7 +114,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.546"
-        app:srcCompat="@drawable/ic_baseline_sentiment_very_dissatisfied_24"
+        app:srcCompat="@drawable/veryDisatisfied_vote_icon"
         android:background="@drawable/circle_shape" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

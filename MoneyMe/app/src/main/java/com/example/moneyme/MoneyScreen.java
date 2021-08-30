@@ -53,6 +53,7 @@ public class MoneyScreen extends AppCompatActivity {
             }
         });
 
+
         // Navigation Bar
         navigationView = findViewById(R.id.navigation);
         navigationView.setSelectedItemId(R.id.money);
