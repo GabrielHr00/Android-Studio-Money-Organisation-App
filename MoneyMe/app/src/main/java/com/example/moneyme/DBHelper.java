@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -16,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
-        MyDB.execSQL("create Table Users(username TEXT primary key, password TEXT, income TEXT)");
+        MyDB.execSQL("create Table Users(username TEXT primary key, password TEXT, income TEXT, zero TEXT)");
     }
 
     @Override
@@ -31,6 +32,8 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("username", username);
         contentValues.put("password", password);
         contentValues.put("income", "");
+        contentValues.put("zero", "0");
+
         long result = MYdb.insert("Users", null, contentValues);
         if(result == 1){
             return false;
@@ -72,6 +75,22 @@ public class DBHelper extends SQLiteOpenHelper {
             MyDB.execSQL("REPLACE INTO Users(username, password, income) VALUES(?,?,?);", new String[] {username, password, income});
         }
     }
+
+    public void voteZero(String username, String password, String income){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        if(c.moveToFirst()){
+            int zero = Integer.parseInt(c.getString(3));
+            String newZero = String.valueOf(zero + 1);
+
+            MyDB.execSQL("REPLACE INTO Users(username, password, income, zero) VALUES(?,?,?,?);", new String[] {username, password, income, newZero});
+        }
+        c.close();
+        MyDB.close();
+    }
+
+
 }
 
 
