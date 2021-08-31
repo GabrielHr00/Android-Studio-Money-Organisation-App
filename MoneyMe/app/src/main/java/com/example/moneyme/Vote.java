@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class Vote extends AppCompatActivity{
+public class Vote extends AppCompatActivity implements View.OnClickListener {
     BottomNavigationView navigationView;
     ImageButton zero, thirty, sixty, hundred;
 
@@ -30,14 +30,10 @@ public class Vote extends AppCompatActivity{
         sixty = findViewById(R.id._65);
         hundred = findViewById(R.id._100);
 
-        zero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DBHelper db = new DBHelper(Vote.this);
-                db.voteZero("pep", "pep", "");
-                Toast.makeText(Vote.this, "Vote successfully counted! ", Toast.LENGTH_SHORT).show();
-            }
-        });
+        zero.setOnClickListener(this);
+        thirty.setOnClickListener(this);
+        sixty.setOnClickListener(this);
+        hundred.setOnClickListener(this);
 
 
         // Navigation Bar
@@ -69,5 +65,28 @@ public class Vote extends AppCompatActivity{
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        DBHelper db = new DBHelper(Vote.this);
+        switch(v.getId()){
+            case R.id._0:
+                db.voteEmoji(3, "zero");
+                Toast.makeText(Vote.this, "Vote successfully counted! ", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id._30:
+                db.voteEmoji(4, "thirty");
+                Toast.makeText(Vote.this, "Vote successfully counted! ", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id._65:
+                db.voteEmoji(5, "sixty");
+                Toast.makeText(Vote.this, "Vote successfully counted! ", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id._100:
+                db.voteEmoji(6, "hundred");
+                Toast.makeText(Vote.this, "Vote successfully counted! ", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
