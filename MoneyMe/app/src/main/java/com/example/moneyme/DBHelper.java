@@ -125,18 +125,19 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
 
         if(c.moveToFirst()){
-            double save = Double.parseDouble(c.getString(7));
-            MyDB.execSQL("UPDATE Users SET savings = ? WHERE savings = ? AND username = ?" , new String[] {percentageSave, String.valueOf(save), username});
-
-            double exp = Double.parseDouble(c.getString(8));
-            MyDB.execSQL("UPDATE Users SET expences = ? WHERE expences = ? AND username = ?", new String[] {percentageExp, String.valueOf(exp), username});
-//            MyDB.execSQL("UPDATE Users SET expences = ? WHERE expences = ?", new String[] {percentageExp, String.valueOf(exp)});
+            //double save = Double.parseDouble(c.getString(7));
+            MyDB.execSQL("UPDATE Users SET savings = ? WHERE username = ?" , new String[] {percentageSave, username});
+            //MyDB.execSQL("UPDATE Users SET savings = ? WHERE savings = ? AND username = ?" , new String[] {percentageSave, String.valueOf(save), username});
 
 
-            double free = Double.parseDouble(c.getString(9));
-            MyDB.execSQL("UPDATE Users SET free = ? WHERE free = ? AND username = ?", new String[] {percentageFree, String.valueOf(free), username});
-//            MyDB.execSQL("UPDATE Users SET free = ? WHERE free = ?", new String[] {percentageFree, String.valueOf(free)});
+            //double exp = Double.parseDouble(c.getString(8));
+            MyDB.execSQL("UPDATE Users SET expences = ? WHERE username = ?", new String[] {percentageExp, username});
+            //MyDB.execSQL("UPDATE Users SET expences = ? WHERE expences = ? AND username = ?", new String[] {percentageExp, String.valueOf(exp), username});
 
+
+            //double free = Double.parseDouble(c.getString(9));
+            MyDB.execSQL("UPDATE Users SET free = ? WHERE username = ?", new String[] {percentageFree, username});
+            //MyDB.execSQL("UPDATE Users SET free = ? WHERE free = ? AND username = ?", new String[] {percentageFree, String.valueOf(free), username});
         }
         c.close();
         MyDB.close();
