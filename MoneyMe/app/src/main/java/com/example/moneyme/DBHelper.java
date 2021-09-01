@@ -36,9 +36,9 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("thirty", "0");
         contentValues.put("sixty", "0");
         contentValues.put("hundred", "0");
-        contentValues.put("savings", "0.40");
-        contentValues.put("expences", "0.40");
-        contentValues.put("free", "0.20");
+        contentValues.put("savings", "40");
+        contentValues.put("expences", "40");
+        contentValues.put("free", "20");
 
         long result = MyDB.insert("Users", null, contentValues);
         MyDB.close();
@@ -93,6 +93,19 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.close();
     }
 
+    public String getIncome(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        String result = "";
+        if(c.moveToFirst()){
+            result = c.getString(2);
+        }
+        c.close();
+        MyDB.close();
+        return result;
+    }
+
     public void voteEmoji(int index, String attribute){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
@@ -107,6 +120,66 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.close();
     }
 
+    public void changePercentage(String username, String percentageSave, String percentageExp, String percentageFree){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        if(c.moveToFirst()){
+            double save = Double.parseDouble(c.getString(7));
+            MyDB.execSQL("UPDATE Users SET savings = ? WHERE savings = ? AND username = ?" , new String[] {percentageSave, String.valueOf(save), username});
+
+            double exp = Double.parseDouble(c.getString(8));
+            MyDB.execSQL("UPDATE Users SET expences = ? WHERE expences = ? AND username = ?", new String[] {percentageExp, String.valueOf(exp), username});
+//            MyDB.execSQL("UPDATE Users SET expences = ? WHERE expences = ?", new String[] {percentageExp, String.valueOf(exp)});
+
+
+            double free = Double.parseDouble(c.getString(9));
+            MyDB.execSQL("UPDATE Users SET free = ? WHERE free = ? AND username = ?", new String[] {percentageFree, String.valueOf(free), username});
+//            MyDB.execSQL("UPDATE Users SET free = ? WHERE free = ?", new String[] {percentageFree, String.valueOf(free)});
+
+        }
+        c.close();
+        MyDB.close();
+    }
+
+    public String getSavings(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        String result = "";
+        if(c.moveToFirst()){
+            result = c.getString(7);
+        }
+        c.close();
+        MyDB.close();
+        return result;
+    }
+
+    public String getExpences(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        String result = "";
+        if(c.moveToFirst()){
+            result = c.getString(8);
+        }
+        c.close();
+        MyDB.close();
+        return result;
+    }
+
+    public String getFree(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        String result = "";
+        if(c.moveToFirst()){
+            result = c.getString(9);
+        }
+        c.close();
+        MyDB.close();
+        return result;
+    }
 }
 
 

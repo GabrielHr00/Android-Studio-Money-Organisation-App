@@ -14,10 +14,6 @@ import com.google.android.material.navigation.NavigationBarView;
 public class Overview extends AppCompatActivity {
     TextView displaySavings, displayOutcome, displayFree;
     BottomNavigationView navigationView;
-    public static double SAVINGS_EXPENSES_VALUE = 0.40;
-    public static double FREE_MONEY_VALUE = 0.20;
-    public static double savings = 0.0;
-    public static double free = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +23,27 @@ public class Overview extends AppCompatActivity {
         displaySavings = findViewById(R.id.savings);
         displayOutcome = findViewById(R.id.outcome);
         displayFree = findViewById(R.id.free);
+        DBHelper db = new DBHelper(this);
 
-
+        // calculate income values
         Intent intent = getIntent();
-        savings = Double.parseDouble(intent.getStringExtra("income"));
-        free = savings;
-        free = FREE_MONEY_VALUE * free;
-        savings = SAVINGS_EXPENSES_VALUE * savings;
-        displaySavings.setText(String.format("   %.2f   ", savings));
-        displayOutcome.setText(String.format("   %.2f   ", savings));
-        displayFree.setText(String.format("   %.2f   ", free));
+        String username = intent.getStringExtra("user");
+        String inc = db.getIncome(username);
 
+        double savings = Double.parseDouble(db.getSavings(username))/100.0;
+        double expences = Double.parseDouble(db.getExpences(username))/100.0;
+        double free = Double.parseDouble(db.getFree(username))/100.0;
+
+        if(!inc.equals("")){
+            double income = Double.parseDouble(inc);
+            savings = income * savings;
+            expences  = income * expences;
+            free = income * free;
+
+            displaySavings.setText(String.format("   %.2f   ", savings));
+            displayOutcome.setText(String.format("   %.2f   ", expences));
+            displayFree.setText(String.format("   %.2f   ", free));
+        }
 
         // Navigation Bar
         navigationView = findViewById(R.id.navigation);
