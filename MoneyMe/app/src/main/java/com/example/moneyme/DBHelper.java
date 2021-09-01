@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
-        MyDB.execSQL("create Table Users(username TEXT primary key, password TEXT, income TEXT, zero TEXT, thirty TEXT, sixty TEXT, hundred TEXT)");
+        MyDB.execSQL("create Table Users(username TEXT primary key, password TEXT, income TEXT, zero TEXT, thirty TEXT, sixty TEXT, hundred TEXT, savings TEXT, expences TEXT, free TEXT)");
     }
 
     @Override
@@ -36,6 +36,9 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("thirty", "0");
         contentValues.put("sixty", "0");
         contentValues.put("hundred", "0");
+        contentValues.put("savings", "0.40");
+        contentValues.put("expences", "0.40");
+        contentValues.put("free", "0.20");
 
         long result = MyDB.insert("Users", null, contentValues);
         MyDB.close();
@@ -103,64 +106,6 @@ public class DBHelper extends SQLiteOpenHelper {
         c.close();
         MyDB.close();
     }
-
-//    public void voteZero(String username){
-//        SQLiteDatabase MyDB = this.getWritableDatabase();
-//        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
-//
-//        if(c.moveToFirst()){
-//            int zero = Integer.parseInt(c.getString(3));
-//            String newZero = String.valueOf(zero + 1);
-//
-//            MyDB.execSQL("UPDATE Users SET zero = ? WHERE username = ?;", new String[] {newZero, username});
-//        }
-//        c.close();
-//        MyDB.close();
-//    }
-//
-//    public void voteThirty(String username){
-//        SQLiteDatabase MyDB = this.getWritableDatabase();
-//        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
-//
-//        if(c.moveToFirst()){
-//            int thirty = Integer.parseInt(c.getString(4));
-//            String newThirty = String.valueOf(thirty + 1);
-//
-//            MyDB.execSQL("UPDATE Users SET thirty = ? WHERE username = ?;", new String[] {newThirty, username});
-//        }
-//        c.close();
-//        MyDB.close();
-//    }
-//
-//    public void voteSixty(String username){
-//        SQLiteDatabase MyDB = this.getWritableDatabase();
-//        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
-//
-//        if(c.moveToFirst()){
-//            int sixty = Integer.parseInt(c.getString(5));
-//            String newSixty = String.valueOf(sixty + 1);
-//
-//            MyDB.execSQL("UPDATE Users SET sixty = ? WHERE username = ?;", new String[] {newSixty, username});
-//        }
-//        c.close();
-//        MyDB.close();
-//    }
-//
-//    public void voteHundred(String username){
-//        SQLiteDatabase MyDB = this.getWritableDatabase();
-//        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
-//
-//        if(c.moveToFirst()){
-//            int hundred = Integer.parseInt(c.getString(6));
-//            String newHundred = String.valueOf(hundred + 1);
-//
-//            MyDB.execSQL("UPDATE Users SET hundred = ? WHERE username = ?;", new String[] {newHundred, username});
-//        }
-//        c.close();
-//        MyDB.close();
-//    }
-//
-//
 
 }
 
