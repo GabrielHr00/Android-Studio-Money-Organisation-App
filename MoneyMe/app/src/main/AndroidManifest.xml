@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneyMe">
-        <activity android:name=".RecalculationScreen"></activity>
+        <activity android:name=".NewOverview"></activity>
+        <activity android:name=".RecalculationScreen" />
         <activity android:name=".MoneyScreen" />
         <activity android:name=".About" />
         <activity android:name=".Progress" />

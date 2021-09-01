@@ -17,9 +17,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MoneyScreen extends AppCompatActivity {
     Button calculate;
     EditText income;
-    DBHelper db;
     BottomNavigationView navigationView;
-    static boolean isAlreadyRun = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +26,7 @@ public class MoneyScreen extends AppCompatActivity {
 
         calculate = findViewById(R.id.calculate);
         income = findViewById(R.id.moneyMeTitle);
-        db = new DBHelper(this);
+        DBHelper db = new DBHelper(this);
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,11 +41,9 @@ public class MoneyScreen extends AppCompatActivity {
                     String username = intent.getStringExtra("user");
                     String password = intent.getStringExtra("pass");
 
-                    // insert an income value and send it to Overview
-                    Intent intent1 = new Intent(getApplicationContext(), Overview.class);
-                    isAlreadyRun = true;
                     db.insertIncome(username, password, income1);
-                    intent1.putExtra("income", income1);
+                    Intent intent1 = new Intent(getApplicationContext(), Overview.class);
+                    intent1.putExtra("user", username);
                     startActivity(intent1);
                 }
             }
@@ -83,9 +79,5 @@ public class MoneyScreen extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    public static boolean isAlreadyRun(){
-        return isAlreadyRun;
     }
 }

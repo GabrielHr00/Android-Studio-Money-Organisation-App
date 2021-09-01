@@ -32,7 +32,7 @@
             android:textColor="@color/cardview_dark_background"
             android:textColorHint="#BF9E86"
             android:textCursorDrawable="@color/white"
-            android:textSize="65dp"
+            android:textSize="55dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="We organised the app and the default percentage, which your income will be organised with, will be 40% for savings and expences, also 20% for your free time or anything you enjoy! That's the optimal and the most active method to organise your money, but if you can't make it with this percentages, you can change them with the button below!"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,6 +109,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818" />
+        app:layout_constraintVertical_bias="0.792" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
