@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 
 public class Progress extends AppCompatActivity {
     PieChart pieChart;
+    TextView savings, outcome, free;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,30 @@ public class Progress extends AppCompatActivity {
 
         String username = db.getUsername();
         pieChart = findViewById(R.id.pieChart);
+        savings = findViewById(R.id.savings);
+        outcome = findViewById(R.id.outcome);
+        free = findViewById(R.id.free);
+
+        String inc = db.getIncome(username);
+        double save = Double.parseDouble(db.getSavings(username))/100.0;
+        double expences = Double.parseDouble(db.getExpences(username))/100.0;
+        double fre = Double.parseDouble(db.getFree(username))/100.0;
+
+        if(!inc.equals("")){
+            double income = Double.parseDouble(inc);
+            save = income * save;
+            expences  = income * expences;
+            fre = income * fre;
+
+            savings.setText(String.format("   %.2f   ", save));
+            outcome.setText(String.format("   %.2f   ", expences));
+            free.setText(String.format("   %.2f   ", fre));
+        }
+        else{
+            savings.setText("Please ");
+            outcome.setText("enter");
+            free.setText("an income!");
+        }
 
         ArrayList<PieEntry> votes = new ArrayList<>();
         votes.add(new PieEntry(Integer.parseInt(db.getVerySatisfied(username)), "Perfect"));
