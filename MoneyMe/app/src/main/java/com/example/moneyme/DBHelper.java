@@ -106,6 +106,19 @@ public class DBHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public String getUsername(){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        String result = "";
+        if(c.moveToFirst()){
+            result = c.getString(0);
+        }
+        c.close();
+        MyDB.close();
+        return result;
+    }
+
     public void voteEmoji(int index, String attribute){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
@@ -118,6 +131,58 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         c.close();
         MyDB.close();
+    }
+
+    public String getVerySatisfied(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        String result = "";
+        if(c.moveToFirst()){
+            result = c.getString(6);
+        }
+        c.close();
+        MyDB.close();
+        return result;
+    }
+
+    public String getSatisfied(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        String result = "";
+        if(c.moveToFirst()){
+            result = c.getString(5);
+        }
+        c.close();
+        MyDB.close();
+        return result;
+    }
+
+    public String getDissatisfied(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        String result = "";
+        if(c.moveToFirst()){
+            result = c.getString(4);
+        }
+        c.close();
+        MyDB.close();
+        return result;
+    }
+
+    public String getVeryDissatisfied(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor c = MyDB.rawQuery("SELECT * FROM Users", null);
+
+        String result = "";
+        if(c.moveToFirst()){
+            result = c.getString(3);
+        }
+        c.close();
+        MyDB.close();
+        return result;
     }
 
     public void changePercentage(String username, String percentageSave, String percentageExp, String percentageFree){
